@@ -1,0 +1,28 @@
+.sidebar {
+  position: absolute;
+  right: 0;
+  width: 400px;
+  height: 100%;
+}
+
+.blue {
+  background-color: rgb(4, 149, 233);
+}
+
+.flex {
+  display: flex;
+}
+.buttons {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.flex > select {
+  width: 300px;
+  margin-left: 10px;
+}
+
+.grey {
+  background-color: lightgray;
+}
