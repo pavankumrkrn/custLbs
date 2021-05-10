@@ -15,10 +15,11 @@ const schemaValues = {
 };
 
 const Sidebar = () => {
+  const url = "https://webhook.site/c7b197e1-3e7d-4b5a-921d-2fef3ee5f49f";
   const [text, settext] = useState("");
   const [context, setContext] = useContext(MyContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const obj = {
       segment_name: text,
@@ -28,7 +29,16 @@ const Sidebar = () => {
         return sch;
       }),
     };
-    console.log(obj);
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    alert("Response Type : " + response.type);
   };
 
   const closeModal = () => {};
