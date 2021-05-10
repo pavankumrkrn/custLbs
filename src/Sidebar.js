@@ -21,24 +21,28 @@ const Sidebar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const obj = {
-      segment_name: text,
-      schema: context.map((i) => {
-        let sch = {};
-        sch["" + i.value] = schemaValues[i.value];
-        return sch;
-      }),
-    };
-    const response = await fetch(url, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    });
+    if (context.length) {
+      const obj = {
+        segment_name: text,
+        schema: context.map((i) => {
+          let sch = {};
+          sch["" + i.value] = schemaValues[i.value];
+          return sch;
+        }),
+      };
+      const response = await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
 
-    alert("Response Type : " + response.type);
+      alert("Response Type : " + response.type);
+    } else {
+      alert("Please add schema");
+    }
   };
 
   const closeModal = () => {};
